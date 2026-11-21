@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Monster Racers">
+  <meta name="theme-color" content="#5fbfff">
+  <title>Monster Mohawk Racers</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- TITLE -->
+  <div id="title" class="screen">
+    <h1 class="logo"><span class="l1">Monster</span><span class="l2">Mohawk</span><span class="l3">Racers</span></h1>
+    <button id="btnPlay" class="big-btn go pulse">▶ Play</button>
+  </div>
+
+  <!-- CUSTOMIZE -->
+  <div id="custom" class="screen hidden">
+    <div class="panel custom-panel">
+      <div class="preview-wrap">
+        <canvas id="preview"></canvas>
+        <button id="btnRandom" class="round-btn dice" aria-label="Surprise me">🎲</button>
+      </div>
+      <div class="custom-right">
+        <div class="tabs" id="tabs"></div>
+        <div class="options" id="options"></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <button id="btnCustomBack" class="round-btn" aria-label="Home">🏠</button>
+      <button id="btnReady" class="big-btn go">Ready! ▶</button>
+    </div>
+  </div>
+
+  <!-- LEVELS -->
+  <div id="levels" class="screen hidden">
+    <h2 class="screen-title">Pick a track!</h2>
+    <div class="level-grid" id="levelGrid"></div>
+    <div class="bottom-bar">
+      <button id="btnLevelsBack" class="round-btn" aria-label="Back">◀</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden">
+    <div class="panel quiz-panel">
+      <div class="quiz-top">
+        <span class="quiz-badge" id="quizBadge">⭐ Quiz Time!</span>
+        <button id="btnSpeak" class="round-btn small" aria-label="Read it again">🔊</button>
+      </div>
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-answers" id="quizAnswers"></div>
+      <div class="quiz-fact hidden" id="quizFact"></div>
+      <button id="btnQuizNext" class="big-btn go hidden">Let's race! ▶</button>
+    </div>
+  </div>
+
+  <!-- RACE HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hearts" id="hearts"></div>
+      <div class="star-box">
+        <div class="star-count" id="starCount">⭐ 0</div>
+        <div class="star-meter" aria-label="10 stars gives a heart back"><i id="starFill"></i><span>❤️</span></div>
+      </div>
+      <div class="progress">
+        <div class="track-line"></div>
+        <canvas class="p-icon" id="pMonster" width="80" height="80"></canvas>
+        <canvas class="p-icon" id="pPlayer" width="80" height="80"></canvas>
+        <div class="p-flag">🏁</div>
+      </div>
+      <button id="btnPause" class="round-btn small" aria-label="Pause">⏸</button>
+    </div>
+    <div class="controls">
+      <div class="lane-btns">
+        <button id="btnUp" class="ctrl" aria-label="Up">▲</button>
+        <button id="btnDown" class="ctrl" aria-label="Down">▼</button>
+      </div>
+      <div class="right-btns">
+        <div class="boost-wrap">
+          <button id="btnBoost" class="ctrl boost" aria-label="Boost"><span>⚡</span></button>
+          <div class="boost-label">BOOST</div>
+        </div>
+        <div class="boost-wrap">
+          <button id="btnJump" class="ctrl jump" aria-label="Jump">⤴</button>
+          <div class="boost-label">JUMP</div>
+        </div>
+      </div>
+    </div>
+    <div class="key-hint" id="keyHint">Keys: ↑ ↓ move &nbsp;·&nbsp; Space jump &nbsp;·&nbsp; Shift boost</div>
+  </div>
+
+  <!-- PAUSE -->
+  <div id="pause" class="screen hidden dim">
+    <div class="panel small-panel">
+      <h2>Paused</h2>
+      <div class="btn-row">
+        <button id="btnResume" class="big-btn go">▶</button>
+        <button id="btnRestart" class="big-btn">🔁</button>
+        <button id="btnPauseHome" class="big-btn">🏠</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden dim">
+    <div class="panel small-panel">
+      <div class="result-emoji" id="resultEmoji">🏆</div>
+      <h2 id="resultTitle">You did it!</h2>
+      <p id="resultText"></p>
+      <div class="btn-row" id="resultBtns"></div>
+    </div>
+  </div>
+
+  <button id="btnMute" class="round-btn mute" aria-label="Sound on or off">🔊</button>
+  <div id="rotateTip" class="rotate-tip">📱 Turn sideways for a bigger track!</div>
+
+  <script src="js/art.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
